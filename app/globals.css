@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary: rgb(199, 53, 0);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-size: larger;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+button {
+  font-weight: bold;
+  color: var(--primary);
+
+  &:hover {
+    background: var(--primary);
+    color: var(--background);
+  }
+}
