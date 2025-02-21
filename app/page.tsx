@@ -97,12 +97,22 @@ export default function Home() {
 }
 
 const names = [
-  ["Aerg-Tval", "Agn", "Arvant", "Belsum", "Belum", "Brint", "Börda"],
-  ["Eldar", "Felban", "Gotven", "Graft", "Grin", "Grittr", "Haerü", "Hargha"],
-  ["Harmug", "Jotna", "Karg", "Karva", "Katla", "Keftar", "Klort", "Kratar"],
-  ["Kutz", "Kvetin", "Lygan", "Margar", "Merkari", "Nagl", "Niduk", "Nifehl"],
-  ["Prügl", "Qillnach", "Risten", "Svind", "Theras", "Therg", "Torvul", "Törn"],
-  ["Urm", "Urvarg", "Vagal", "Vatan", "Von", "Vrakh", "Vresi", "Wemut"],
+  ["Aglovale", "Agravaine", "Amr", "Andred", "Ambrosius", "Bagdemagus"],
+  ["Ban", "Balan", "Balin", "Bedivere", "Bors", "Brangaine"],
+  ["Brangaine", "Bruin", "Breunor", "Brutus", "Cador", "Caelia"],
+  ["Caradoc", "Catigern", "Cei", "Claudas", "Claudin", "Culhwch"],
+  ["Cynric", "Dagonet", "Dinadan", "Durnure", "Ector", "Edern"],
+  ["Elyan", "Enide", "Erec", "Escanor", "Evaine", "Gaheris"],
+  ["Galahad", "Galehault", "Galeschin", "Gareth", "Geraint", "Gildas"],
+  ["Girart", "Griflet", "Gringolet", "Guinevak", "Guiron", "Gwyn"],
+  ["Hengest", "Horsa", "Isolde", "Josephus", "Kahedin", "Lamorak"],
+  ["Lanval", "Laudine", "Lionel", "Lohengrin", "Loholt", "Loth"],
+  ["Lucan", "Lucius", "Lunete", "Mabon", "Madoc", "Maleagant"],
+  ["Meliodas", "Modron", "Mordred", "Morgaine", "Morgause", "Morholt"],
+  ["Morien", "Morvydd", "Nimue", "Oberon", "Orgeluse", "Owain"],
+  ["Palamedes", "Parcenet", "Pellam", "Pelleas", "Pellinore", "Percival"],
+  ["Ragnelle", "Rhiannon", "Safir", "Sagramore", "Tor", "Urien"],
+  ["Uther", "Vortigern", "Vortimer", "Yvain", "Ywain", "Zephyranthes"],
 ];
 
 const generateName = (): string => {
