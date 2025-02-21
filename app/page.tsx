@@ -20,6 +20,7 @@ export default function Home() {
     <div className="min-h-screen items-center p-8 pb-20 sm:p-20">
       <div className="flex flex-row items-center">
         <button
+          id="nameButton"
           className={`${jacquard.className} p-2 text-[4rem]`}
           onClick={() => setName(generateName())}
         >
@@ -31,7 +32,7 @@ export default function Home() {
         id="abilities"
         className="grid grid-flow-row grid-cols-6 items-center gap-2"
       >
-        <div className="border-4">
+        <div>
           <p className="m-2">Defense: {strength && strength + 10}</p>
           <button
             className="w-full p-2"
@@ -41,7 +42,7 @@ export default function Home() {
           </button>
           <p className="m-2">Bonus: {strength && `+${strength}`}</p>
         </div>
-        <div className="border-4">
+        <div>
           <p className="m-2">Defense: {dexterity && dexterity + 10}</p>
           <button
             className="w-full p-2"
@@ -51,7 +52,7 @@ export default function Home() {
           </button>
           <p className="m-2">Bonus: {dexterity && `+${dexterity}`}</p>
         </div>
-        <div className="border-4">
+        <div>
           <p className="m-2">Defense: {constitution && constitution + 10}</p>
           <button
             className="w-full p-2"
@@ -61,7 +62,7 @@ export default function Home() {
           </button>
           <p className="m-2">Bonus: {constitution && `+${constitution}`}</p>
         </div>
-        <div className="border-4">
+        <div>
           <p className="m-2">Defense: {intelligence && intelligence + 10}</p>
           <button
             className="w-full p-2"
@@ -71,7 +72,7 @@ export default function Home() {
           </button>
           <p className="m-2">Bonus: {intelligence && `+${intelligence}`}</p>
         </div>
-        <div className="border-4">
+        <div>
           <p className="m-2">Defense: {wisdom && wisdom + 10}</p>
           <button
             className="w-full p-2"
@@ -81,7 +82,7 @@ export default function Home() {
           </button>
           <p className="m-2">Bonus: {wisdom && `+${wisdom}`}</p>
         </div>
-        <div className="border-4">
+        <div>
           <p className="m-2">Defense: {charisma && charisma + 10}</p>
           <button
             className="w-full p-2"
@@ -92,6 +93,8 @@ export default function Home() {
           <p className="m-2">Bonus: {charisma && `+${charisma}`}</p>
         </div>
       </div>
+      <h2>Starting Gear</h2>
+      <button>Armor</button>
     </div>
   );
 }

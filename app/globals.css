@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: rgb(26, 7, 0);
+  --background-a: rgb(26, 7, 0);
+  --background-b: rgb(89, 24, 0);
+  --background-c: rgb(114, 31, 0);
   --foreground: rgb(255, 222, 210);
-  --primary: rgb(199, 53, 0);
+  --primary-a: rgb(216, 58, 0);
+  --primary-b: rgb(255, 68, 0);
 }
 
 * {
@@ -14,7 +17,7 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background-a);
   font-size: larger;
 }
 
@@ -22,12 +25,36 @@ h1 {
   font-size: 3rem;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2rem;
+}
+
 button {
+  padding: 0.5rem 1rem;
   font-weight: bold;
-  color: var(--primary);
+  color: var(--background-a);
+  background-color: var(--primary-a);
 
   &:hover {
-    background: var(--primary);
-    color: var(--background);
+    background: var(--primary-b);
+    color: var(--background-b);
   }
+
+  /* &#nameButton {
+    background-color: var(--background-a);
+
+    &:hover {
+      background: var(--primary-a);
+      color: var(--background-b);
+    }
+  } */
+}
+
+#abilities > div {
+  background-color: var(--background-b);
 }
