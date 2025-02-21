@@ -1,7 +1,7 @@
 "use client";
+
 import { useState } from "react";
 import { Jacquard_24 } from "next/font/google";
-
 const jacquard = Jacquard_24({
   weight: "400",
   display: "swap",
@@ -18,65 +18,79 @@ export default function Home() {
 
   return (
     <div className="min-h-screen items-center p-8 pb-20 sm:p-20">
-      <div>
-        <h1 className={`${jacquard.className}`}>Who art thou, knave?</h1>
-        <p className="p-2">{name}</p>
-        <button onClick={() => setName(generateName())} className="p-2">
-          Name
+      <div className="flex flex-row items-center">
+        <button
+          className={`${jacquard.className} p-2 text-[4rem]`}
+          onClick={() => setName(generateName())}
+        >
+          Who art thou, knave?
         </button>
+        <p className="m-4 text-[3rem]">{name}</p>
       </div>
       <div
         id="abilities"
-        className="grid-col-6 grid-row-3 grid items-center gap-4"
+        className="grid grid-flow-row grid-cols-6 items-center gap-2"
       >
-        <p className="col-start-1 row-start-1">Defense: {strength + 10}</p>
-        <button
-          onClick={() => setStrength(rollAbility())}
-          className="col-start-1 row-start-2 p-2"
-        >
-          Strength
-        </button>
-        <p className="col-start-1 row-start-3">Bonus: +{strength}</p>
-        <p className="col-start-2 row-start-1">Defense: {dexterity + 10}</p>
-        <button
-          onClick={() => setDexterity(rollAbility())}
-          className="col-start-2 row-start-2 p-2"
-        >
-          Dexterity
-        </button>
-        <p className="col-start-2 row-start-3">Bonus: +{dexterity}</p>
-        <p className="col-start-3 row-start-1">Defense: {constitution + 10}</p>
-        <button
-          onClick={() => setConstitution(rollAbility())}
-          className="col-start-3 row-start-2 p-2"
-        >
-          Constitution
-        </button>
-        <p className="col-start-3 row-start-3">Bonus: +{constitution}</p>
-        <p className="col-start-4 row-start-1">Defense: {intelligence + 10}</p>
-        <button
-          onClick={() => setIntelligence(rollAbility())}
-          className="col-start-4 row-start-2 p-2"
-        >
-          Intelligence
-        </button>
-        <p className="col-start-4 row-start-3">Bonus: +{intelligence}</p>
-        <p className="col-start-5 row-start-1">Defense: {wisdom + 10}</p>
-        <button
-          onClick={() => setWisdom(rollAbility())}
-          className="col-start-5 row-start-2 p-2"
-        >
-          Wisdom
-        </button>
-        <p className="col-start-5 row-start-3">Bonus: +{wisdom}</p>
-        <p className="col-start-6 row-start-1">Defense: {charisma + 10}</p>
-        <button
-          onClick={() => setCharisma(rollAbility())}
-          className="col-start-6 row-start-2 p-2"
-        >
-          Charisma
-        </button>
-        <p className="col-start-6 row-start-3">Bonus: +{charisma}</p>
+        <div className="border-4">
+          <p className="m-2">Defense: {strength && strength + 10}</p>
+          <button
+            className="w-full p-2"
+            onClick={() => setStrength(rollAbility())}
+          >
+            Strength
+          </button>
+          <p className="m-2">Bonus: {strength && `+${strength}`}</p>
+        </div>
+        <div className="border-4">
+          <p className="m-2">Defense: {dexterity && dexterity + 10}</p>
+          <button
+            className="w-full p-2"
+            onClick={() => setDexterity(rollAbility())}
+          >
+            Dexterity
+          </button>
+          <p className="m-2">Bonus: {dexterity && `+${dexterity}`}</p>
+        </div>
+        <div className="border-4">
+          <p className="m-2">Defense: {constitution && constitution + 10}</p>
+          <button
+            className="w-full p-2"
+            onClick={() => setConstitution(rollAbility())}
+          >
+            Constitution
+          </button>
+          <p className="m-2">Bonus: {constitution && `+${constitution}`}</p>
+        </div>
+        <div className="border-4">
+          <p className="m-2">Defense: {intelligence && intelligence + 10}</p>
+          <button
+            className="w-full p-2"
+            onClick={() => setIntelligence(rollAbility())}
+          >
+            Intelligence
+          </button>
+          <p className="m-2">Bonus: {intelligence && `+${intelligence}`}</p>
+        </div>
+        <div className="border-4">
+          <p className="m-2">Defense: {wisdom && wisdom + 10}</p>
+          <button
+            className="w-full p-2"
+            onClick={() => setWisdom(rollAbility())}
+          >
+            Wisdom
+          </button>
+          <p className="m-2">Bonus: {wisdom && `+${wisdom}`}</p>
+        </div>
+        <div className="border-4">
+          <p className="m-2">Defense: {charisma && charisma + 10}</p>
+          <button
+            className="w-full p-2"
+            onClick={() => setCharisma(rollAbility())}
+          >
+            Charisma
+          </button>
+          <p className="m-2">Bonus: {charisma && `+${charisma}`}</p>
+        </div>
       </div>
     </div>
   );

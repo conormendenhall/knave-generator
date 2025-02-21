@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: rgb(26, 7, 0);
+  --foreground: rgb(255, 222, 210);
   --primary: rgb(199, 53, 0);
+}
+
+* {
+  border-color: var(--foreground);
 }
 
 body {
