@@ -15,6 +15,8 @@ export default function Home() {
   const [intelligence, setIntelligence] = useState<number | null>(null);
   const [wisdom, setWisdom] = useState<number | null>(null);
   const [charisma, setCharisma] = useState<number | null>(null);
+  const [hitPoints, setHitPoints] = useState<number | null>(null);
+  const [maxHitPoints, setMaxHitPoints] = useState<number | null>(null);
   const [armor, setArmor] = useState<string | null>(null);
 
   return (
@@ -28,6 +30,40 @@ export default function Home() {
           Who art thou, knave?
         </button>
         <p className="m-4 text-[3rem]">{name}</p>
+        <div className="ml-auto">
+          <button
+            onClick={() => {
+              const roll = rollDie(8);
+              setMaxHitPoints(roll);
+              setHitPoints(roll);
+            }}
+          >
+            Hit Points
+          </button>
+          <div className="flex">
+            <button
+              onClick={() =>
+                hitPoints !== null && setHitPoints(Math.max(hitPoints - 1, 0))
+              }
+              className="p-2"
+            >
+              &#9660;
+            </button>
+            <p className="m-2 grow text-center">
+              {maxHitPoints && `${hitPoints}/${maxHitPoints}`}
+            </p>
+            <button
+              onClick={() =>
+                hitPoints !== null &&
+                maxHitPoints !== null &&
+                setHitPoints(Math.min(hitPoints + 1, maxHitPoints))
+              }
+              className="p-2"
+            >
+              &#9650;
+            </button>
+          </div>
+        </div>
       </div>
       <div
         id="abilities"
@@ -135,6 +171,7 @@ const lowestOf3d6 = (): number => {
   const sides = 6;
   const numberOfDice = 3;
   let lowest = sides;
+
   for (let i = 0; i < numberOfDice; i++) {
     const roll = rollDie(sides);
     if (roll < lowest) {
