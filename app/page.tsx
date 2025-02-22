@@ -15,6 +15,7 @@ export default function Home() {
   const [intelligence, setIntelligence] = useState<number | null>(null);
   const [wisdom, setWisdom] = useState<number | null>(null);
   const [charisma, setCharisma] = useState<number | null>(null);
+  const [armor, setArmor] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen items-center p-8 pb-20 sm:p-20">
@@ -36,7 +37,7 @@ export default function Home() {
           <p className="m-2">Defense: {strength && strength + 10}</p>
           <button
             className="w-full p-2"
-            onClick={() => setStrength(rollAbility())}
+            onClick={() => setStrength(lowestOf3d6())}
           >
             Strength
           </button>
@@ -46,7 +47,7 @@ export default function Home() {
           <p className="m-2">Defense: {dexterity && dexterity + 10}</p>
           <button
             className="w-full p-2"
-            onClick={() => setDexterity(rollAbility())}
+            onClick={() => setDexterity(lowestOf3d6())}
           >
             Dexterity
           </button>
@@ -56,7 +57,7 @@ export default function Home() {
           <p className="m-2">Defense: {constitution && constitution + 10}</p>
           <button
             className="w-full p-2"
-            onClick={() => setConstitution(rollAbility())}
+            onClick={() => setConstitution(lowestOf3d6())}
           >
             Constitution
           </button>
@@ -66,7 +67,7 @@ export default function Home() {
           <p className="m-2">Defense: {intelligence && intelligence + 10}</p>
           <button
             className="w-full p-2"
-            onClick={() => setIntelligence(rollAbility())}
+            onClick={() => setIntelligence(lowestOf3d6())}
           >
             Intelligence
           </button>
@@ -76,7 +77,7 @@ export default function Home() {
           <p className="m-2">Defense: {wisdom && wisdom + 10}</p>
           <button
             className="w-full p-2"
-            onClick={() => setWisdom(rollAbility())}
+            onClick={() => setWisdom(lowestOf3d6())}
           >
             Wisdom
           </button>
@@ -86,7 +87,7 @@ export default function Home() {
           <p className="m-2">Defense: {charisma && charisma + 10}</p>
           <button
             className="w-full p-2"
-            onClick={() => setCharisma(rollAbility())}
+            onClick={() => setCharisma(lowestOf3d6())}
           >
             Charisma
           </button>
@@ -94,7 +95,8 @@ export default function Home() {
         </div>
       </div>
       <h2>Starting Gear</h2>
-      <button>Armor</button>
+      <button onClick={() => setArmor(rollArmor())}>Armor</button>
+      <p className="m-2">{armor}</p>
     </div>
   );
 }
@@ -125,15 +127,33 @@ const generateName = (): string => {
   return names[firstRoll][secondRoll];
 };
 
-const rollAbility = (): number => {
+const rollDie = (sides: number): number => {
+  return Math.floor(Math.random() * sides) + 1;
+};
+
+const lowestOf3d6 = (): number => {
   const sides = 6;
   const numberOfDice = 3;
   let lowest = sides;
   for (let i = 0; i < numberOfDice; i++) {
-    const roll = Math.floor(Math.random() * sides) + 1;
+    const roll = rollDie(sides);
     if (roll < lowest) {
       lowest = roll;
     }
   }
   return lowest;
+};
+
+const rollArmor = (): string => {
+  const roll = rollDie(20);
+
+  if (roll < 4) {
+    return "No armor";
+  } else if (roll < 15) {
+    return "Gambeson";
+  } else if (roll < 20) {
+    return "Brigandine";
+  } else {
+    return "Chain";
+  }
 };
