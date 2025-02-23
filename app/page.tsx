@@ -2,6 +2,23 @@
 
 import { useState } from "react";
 import { Jacquard_24 } from "next/font/google";
+import {
+  Names,
+  Physiques,
+  Faces,
+  Skins,
+  Hairs,
+  Clothing,
+  Virtues,
+  Vices,
+  Speech,
+  Backgrounds,
+  Misfortunes,
+  Alignments,
+  DungeoneeringGear,
+  GeneralGear1,
+  GeneralGear2,
+} from "./constants";
 const jacquard = Jacquard_24({
   weight: "400",
   display: "swap",
@@ -41,7 +58,7 @@ export default function Home() {
   const [generalGear2, setGeneralGear2] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen items-center p-8 pb-20 sm:p-20">
+    <div className="min-h-screen items-center p-8">
       <div className="flex flex-row items-center">
         <button
           id="nameButton"
@@ -61,7 +78,7 @@ export default function Home() {
           >
             Hit Points
           </button>
-          <div className="flex">
+          <div className="flex color-mid">
             <button
               onClick={() =>
                 hitPoints !== null && setHitPoints(Math.max(hitPoints - 1, 0))
@@ -151,246 +168,165 @@ export default function Home() {
           <p className="m-2">Bonus: {charisma && `+${charisma}`}</p>
         </div>
       </div>
-      <h2>Traits</h2>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setPhysique(rollPhysique())}
-          className="w-1/2 text-left"
-        >
-          Physique
-        </button>
-        <p className="px-4 py-2">{physique}</p>
-      </div>
-      <div className="color-mid flex">
-        <button onClick={() => setFace(rollFace())} className="w-1/2 text-left">
-          Face
-        </button>
-        <p className="grow px-4 py-2">{face}</p>
-      </div>
-      <div className="color-mid flex">
-        <button onClick={() => setSkin(rollSkin())} className="w-1/2 text-left">
-          Skin
-        </button>
-        <p className="grow px-4 py-2">{skin}</p>
-      </div>
-      <div className="color-mid flex">
-        <button onClick={() => setHair(rollHair())} className="w-1/2 text-left">
-          Hair
-        </button>
-        <p className="grow px-4 py-2">{hair}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setClothing(rollClothing())}
-          className="w-1/2 text-left"
-        >
-          Clothing
-        </button>
-        <p className="grow px-4 py-2">{clothing}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setVirtue(rollVirtue())}
-          className="w-1/2 text-left"
-        >
-          Virtue
-        </button>
-        <p className="grow px-4 py-2">{virtue}</p>
-      </div>
-      <div className="color-mid flex">
-        <button onClick={() => setVice(rollVice())} className="w-1/2 text-left">
-          Vice
-        </button>
-        <p className="grow px-4 py-2">{vice}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setSpeech(rollSpeech())}
-          className="w-1/2 text-left"
-        >
-          Speech
-        </button>
-        <p className="grow px-4 py-2">{speech}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setBackground(rollBackground())}
-          className="w-1/2 text-left"
-        >
-          Background
-        </button>
-        <p className="grow px-4 py-2">{background}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setMisfortunes(rollMisfortunes())}
-          className="w-1/2 text-left"
-        >
-          Misfortunes
-        </button>
-        <p className="grow px-4 py-2">{misfortunes}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setAlignment(rollAlignment())}
-          className="w-1/2 text-left"
-        >
-          Alignment
-        </button>
-        <p className="grow px-4 py-2">{alignment}</p>
-      </div>
-      <h2>Starting Gear</h2>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setArmor(rollArmor())}
-          className="w-1/2 text-left"
-        >
-          Armor
-        </button>
-        <p className="grow px-4 py-2">{armor}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setHelmetsAndShield(rollHelmetAndShield())}
-          className="w-1/2 text-left"
-        >
-          Helmet and Shield
-        </button>
-        <p className="grow px-4 py-2">{helmetsAndShield}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setDungeoneeringGear(rollDungeoneeringGear())}
-          className="w-1/2 text-left"
-        >
-          Dungeoneering Gear
-        </button>
-        <p className="grow px-4 py-2">{dungeoneeringGear}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setGeneralGear1(rollGeneralGear1())}
-          className="w-1/2 text-left"
-        >
-          General Gear 1
-        </button>
-        <p className="grow px-4 py-2">{generalGear1}</p>
-      </div>
-      <div className="color-mid flex">
-        <button
-          onClick={() => setGeneralGear2(rollGeneralGear2())}
-          className="w-1/2 text-left"
-        >
-          General Gear 2
-        </button>
-        <p className="grow px-4 py-2">{generalGear2}</p>
-      </div>
+      <section className="flex">
+        <section className="w-1/2">
+          <h2>Traits</h2>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setPhysique(rollPhysique())}
+              className="w-1/2 text-left"
+            >
+              Physique
+            </button>
+            <p className="px-4 py-2">{physique}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setFace(rollFace())}
+              className="w-1/2 text-left"
+            >
+              Face
+            </button>
+            <p className="grow px-4 py-2">{face}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setSkin(rollSkin())}
+              className="w-1/2 text-left"
+            >
+              Skin
+            </button>
+            <p className="grow px-4 py-2">{skin}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setHair(rollHair())}
+              className="w-1/2 text-left"
+            >
+              Hair
+            </button>
+            <p className="grow px-4 py-2">{hair}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setClothing(rollClothing())}
+              className="w-1/2 text-left"
+            >
+              Clothing
+            </button>
+            <p className="grow px-4 py-2">{clothing}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setVirtue(rollVirtue())}
+              className="w-1/2 text-left"
+            >
+              Virtue
+            </button>
+            <p className="grow px-4 py-2">{virtue}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setVice(rollVice())}
+              className="w-1/2 text-left"
+            >
+              Vice
+            </button>
+            <p className="grow px-4 py-2">{vice}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setSpeech(rollSpeech())}
+              className="w-1/2 text-left"
+            >
+              Speech
+            </button>
+            <p className="grow px-4 py-2">{speech}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setBackground(rollBackground())}
+              className="w-1/2 text-left"
+            >
+              Background
+            </button>
+            <p className="grow px-4 py-2">{background}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setMisfortunes(rollMisfortunes())}
+              className="w-1/2 text-left"
+            >
+              Misfortunes
+            </button>
+            <p className="grow px-4 py-2">{misfortunes}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setAlignment(rollAlignment())}
+              className="w-1/2 text-left"
+            >
+              Alignment
+            </button>
+            <p className="grow px-4 py-2">{alignment}</p>
+          </div>
+        </section>
+        <section className="w-1/2">
+          <h2>Starting Gear</h2>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setArmor(rollArmor())}
+              className="w-1/2 text-left"
+            >
+              Armor
+            </button>
+            <p className="grow px-4 py-2">{armor}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setHelmetsAndShield(rollHelmetAndShield())}
+              className="w-1/2 text-left"
+            >
+              Helmet and Shield
+            </button>
+            <p className="grow px-4 py-2">{helmetsAndShield}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setDungeoneeringGear(rollDungeoneeringGear())}
+              className="w-1/2 text-left"
+            >
+              Dungeoneering Gear
+            </button>
+            <p className="grow px-4 py-2">{dungeoneeringGear}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setGeneralGear1(rollGeneralGear1())}
+              className="w-1/2 text-left"
+            >
+              General Gear 1
+            </button>
+            <p className="grow px-4 py-2">{generalGear1}</p>
+          </div>
+          <div className="color-mid flex">
+            <button
+              onClick={() => setGeneralGear2(rollGeneralGear2())}
+              className="w-1/2 text-left"
+            >
+              General Gear 2
+            </button>
+            <p className="grow px-4 py-2">{generalGear2}</p>
+          </div>
+        </section>
+      </section>
     </div>
   );
 }
 
-const names = [
-  "Aglovale",
-  "Agravaine",
-  "Amr",
-  "Andred",
-  "Ambrosius",
-  "Bagdemagus",
-  "Ban",
-  "Balan",
-  "Balin",
-  "Bedivere",
-  "Bors",
-  "Brangaine",
-  "Brangaine",
-  "Bruin",
-  "Breunor",
-  "Brutus",
-  "Cador",
-  "Caelia",
-  "Caradoc",
-  "Catigern",
-  "Cei",
-  "Claudas",
-  "Claudin",
-  "Culhwch",
-  "Cynric",
-  "Dagonet",
-  "Dinadan",
-  "Durnure",
-  "Ector",
-  "Edern",
-  "Elyan",
-  "Enide",
-  "Erec",
-  "Escanor",
-  "Evaine",
-  "Gaheris",
-  "Galahad",
-  "Galehault",
-  "Galeschin",
-  "Gareth",
-  "Geraint",
-  "Gildas",
-  "Girart",
-  "Griflet",
-  "Gringolet",
-  "Guinevak",
-  "Guiron",
-  "Gwyn",
-  "Hengest",
-  "Horsa",
-  "Isolde",
-  "Josephus",
-  "Kahedin",
-  "Lamorak",
-  "Lanval",
-  "Laudine",
-  "Lionel",
-  "Lohengrin",
-  "Loholt",
-  "Loth",
-  "Lucan",
-  "Lucius",
-  "Lunete",
-  "Mabon",
-  "Madoc",
-  "Maleagant",
-  "Meliodas",
-  "Modron",
-  "Mordred",
-  "Morgaine",
-  "Morgause",
-  "Morholt",
-  "Morien",
-  "Morvydd",
-  "Nimue",
-  "Oberon",
-  "Orgeluse",
-  "Owain",
-  "Palamedes",
-  "Parcenet",
-  "Pellam",
-  "Pelleas",
-  "Pellinore",
-  "Percival",
-  "Ragnelle",
-  "Rhiannon",
-  "Safir",
-  "Sagramore",
-  "Tor",
-  "Urien",
-  "Uther",
-  "Vortigern",
-  "Vortimer",
-  "Yvain",
-  "Ywain",
-  "Zephyranthes",
-];
-
 const generateName = (): string => {
-  const roll = Math.floor(Math.random() * names.length);
-  return names[roll];
+  const roll = Math.floor(Math.random() * Names.length);
+  return Names[roll];
 };
 
 const rollDie = (sides: number): number => {
@@ -411,291 +347,59 @@ const lowestOf3d6 = (): number => {
   return lowest;
 };
 
-const physiques = [
-  "Athletic",
-  "Brawny",
-  "Corpulent",
-  "Delicate",
-  "Gaunt",
-  "Hulking",
-  "Lanky",
-  "Ripped",
-  "Rugged",
-  "Scrawny",
-  "Short",
-  "Sinewy",
-  "Slender",
-  "Flabby",
-  "Statuesque",
-  "Stout",
-  "Tiny",
-  "Towering",
-  "Willowy",
-  "Wiry",
-];
-
 const rollPhysique = (): string => {
-  const roll = Math.floor(Math.random() * physiques.length);
-  return physiques[roll];
+  const roll = Math.floor(Math.random() * Physiques.length);
+  return Physiques[roll];
 };
-
-const faces = [
-  "Bloated",
-  "Blunt",
-  "Bony",
-  "Chiseled",
-  "Delicate",
-  "Elognated",
-  "Patrician",
-  "Pinched",
-  "Hawkish",
-  "Broken",
-  "Impish",
-  "Narrow",
-  "Ratlike",
-  "Round",
-  "Sunken",
-  "Sharp",
-  "Soft",
-  "Square",
-  "Wide",
-  "Wolfish",
-];
 
 const rollFace = (): string => {
-  const roll = Math.floor(Math.random() * faces.length);
-  return faces[roll];
+  const roll = Math.floor(Math.random() * Faces.length);
+  return Faces[roll];
 };
-
-const skins = [
-  "Battle Scar",
-  "Birthmark",
-  "Burn Scar",
-  "Dark",
-  "Makeup",
-  "Oily",
-  "Pale",
-  "Perfect",
-  "Pierced",
-  "Pockmarked",
-  "Reeking",
-  "Tattooed",
-  "Rosy",
-  "Rough",
-  "Sallow",
-  "Sunburned",
-  "Tanned",
-  "War Paint",
-  "Weathered",
-  "Whip Scar",
-];
 
 const rollSkin = (): string => {
-  const roll = Math.floor(Math.random() * skins.length);
-  return skins[roll];
+  const roll = Math.floor(Math.random() * Skins.length);
+  return Skins[roll];
 };
-
-const hairs = [
-  "Bald",
-  "Birthmark",
-  "Bristly",
-  "Cropped",
-  "Curly",
-  "Disheveled",
-  "Dreadlocks",
-  "Filthy",
-  "Frizzy",
-  "Greased",
-  "Limp",
-  "Long",
-  "Luxurious",
-  "Mohawk",
-  "Oily",
-  "Ponytail",
-  "Silky",
-  "Topknot",
-  "Wavy",
-  "Wispy",
-];
 
 const rollHair = (): string => {
-  const roll = Math.floor(Math.random() * hairs.length);
-  return hairs[roll];
+  const roll = Math.floor(Math.random() * Hairs.length);
+  return Hairs[roll];
 };
-
-const clothing = [
-  "Antique",
-  "Bloody",
-  "Ceremonial",
-  "Decorated",
-  "Eccentric",
-  "Elegant",
-  "Fashionable",
-  "Filthy",
-  "Flamboyant",
-  "Stained",
-  "Foreign",
-  "Frayed",
-  "Frumpy",
-  "Livery",
-  "Oversized",
-  "Patched",
-  "Perfumed",
-  "Rancid",
-  "Torn",
-  "Undersized",
-];
 
 const rollClothing = (): string => {
-  const roll = Math.floor(Math.random() * clothing.length);
-  return clothing[roll];
+  const roll = Math.floor(Math.random() * Clothing.length);
+  return Clothing[roll];
 };
-
-const virtues = [
-  "Ambitious",
-  "Cautious",
-  "Courageous",
-  "Courteous",
-  "Curious",
-  "Disciplined",
-  "Focused",
-  "Generous",
-  "Gregarious",
-  "Honest",
-  "Honorable",
-  "Humble",
-  "Idealistic",
-  "Just",
-  "Loyal",
-  "Merciful",
-  "Righteous",
-  "Serene",
-  "Stoic",
-  "Tolerant",
-];
 
 const rollVirtue = (): string => {
-  const roll = Math.floor(Math.random() * virtues.length);
-  return virtues[roll];
+  const roll = Math.floor(Math.random() * Virtues.length);
+  return Virtues[roll];
 };
-
-const vices = [
-  "Aggressive",
-  "Arrogant",
-  "Bitter",
-  "Cowardly",
-  "Cruel",
-  "Deceitful",
-  "Flippant",
-  "Gluttonous",
-  "Greedy",
-  "Irascible",
-  "Lazy",
-  "Nervous",
-  "Prejudiced",
-  "Reckless",
-  "Rude",
-  "Suspicious",
-  "Vain",
-  "Vengeful",
-  "Wasteful",
-  "Whiny",
-];
 
 const rollVice = (): string => {
-  const roll = Math.floor(Math.random() * vices.length);
-  return vices[roll];
+  const roll = Math.floor(Math.random() * Vices.length);
+  return Vices[roll];
 };
-
-const speeches = [
-  "Blunt",
-  "Booming",
-  "Breathy",
-  "Cryptic",
-  "Drawling",
-  "Droning",
-  "Flowery",
-  "Formal",
-  "Gravelly",
-  "Hoarse",
-  "Mumbling",
-  "Precise",
-  "Quaint",
-  "Rambling",
-  "Rapid-fire",
-  "Dialect",
-  "Slow",
-  "Squeaky",
-  "Stuttering",
-  "Whispery",
-];
 
 const rollSpeech = (): string => {
-  const roll = Math.floor(Math.random() * speeches.length);
-  return speeches[roll];
+  const roll = Math.floor(Math.random() * Speech.length);
+  return Speech[roll];
 };
-
-const backgrounds = [
-  "Alchemist",
-  "Beggar",
-  "Butcher",
-  "Burglar",
-  "Charlatan",
-  "Cleric",
-  "Cook",
-  "Cultist",
-  "Gambler",
-  "Herbalist",
-  "Magician",
-  "Mariner",
-  "Mercenary",
-  "Merchant",
-  "Outlaw",
-  "Performer",
-  "Pickpocket",
-  "Smuggler",
-  "Student",
-  "Tracker",
-];
 
 const rollBackground = (): string => {
-  const roll = Math.floor(Math.random() * backgrounds.length);
-  return backgrounds[roll];
+  const roll = Math.floor(Math.random() * Backgrounds.length);
+  return Backgrounds[roll];
 };
-
-const misfortunes = [
-  "Abandoned",
-  "Addicted",
-  "Blackmailed",
-  "Condemned",
-  "Cursed",
-  "Defrauded",
-  "Demoted",
-  "Discredited",
-  "Disowned",
-  "Exiled",
-  "Framed",
-  "Haunted",
-  "Kidnapped",
-  "Mutilated",
-  "Poor",
-  "Pursued",
-  "Rejected",
-  "Replaced",
-  "Robbed",
-  "Suspected",
-];
 
 const rollMisfortunes = (): string => {
-  const roll = Math.floor(Math.random() * misfortunes.length);
-  return misfortunes[roll];
+  const roll = Math.floor(Math.random() * Misfortunes.length);
+  return Misfortunes[roll];
 };
 
-const alignments = ["Law", "Neutrality", "Chaos"];
-
 const rollAlignment = (): string => {
-  const roll = Math.floor(Math.random() * alignments.length);
-  return alignments[roll];
+  const roll = Math.floor(Math.random() * Alignments.length);
+  return Alignments[roll];
 };
 
 const rollArmor = (): string => {
@@ -726,86 +430,17 @@ const rollHelmetAndShield = (): string => {
   }
 };
 
-const dungeoneeringGear = [
-  "Rope, 50ft",
-  "Pulleys",
-  "Candles, 5",
-  "Chain, 10ft",
-  "Chalk, 10",
-  "Crowbar",
-  "Tinderbox",
-  "Grap. hook",
-  "Hammer",
-  "Waterskin",
-  "Lantern",
-  "Lamp oil",
-  "Padlock",
-  "Manacles",
-  "Mirror",
-  "Pole, 10ft",
-  "Sack",
-  "Tent",
-  "Spikes, 5",
-  "Torches, 5",
-];
-
 const rollDungeoneeringGear = (): string => {
-  const roll = Math.floor(Math.random() * dungeoneeringGear.length);
-  return dungeoneeringGear[roll];
+  const roll = Math.floor(Math.random() * DungeoneeringGear.length);
+  return DungeoneeringGear[roll];
 };
-
-const generalGear1 = [
-  "Air bladder",
-  "Bear trap",
-  "Shovel",
-  "Bellows",
-  "Grease",
-  "Saw",
-  "Bucket",
-  "Caltrops",
-  "Chisel",
-  "Drill",
-  "Fish. rod",
-  "Marbles",
-  "Glue",
-  "Pick",
-  "Hourglass",
-  "Net",
-  "Tongs",
-  "Lockpicks",
-  "Metal file",
-  "Nails",
-];
 
 const rollGeneralGear1 = (): string => {
-  const roll = Math.floor(Math.random() * generalGear1.length);
-  return generalGear1[roll];
+  const roll = Math.floor(Math.random() * GeneralGear1.length);
+  return GeneralGear1[roll];
 };
 
-const generalGear2 = [
-  "Incense",
-  "Sponge",
-  "Lens",
-  "Perfume",
-  "Horn",
-  "Bottle",
-  "Soap",
-  "Spyglass",
-  "Tar pot",
-  "Twine",
-  "Fake jewels",
-  "Blank book",
-  "Card deck",
-  "Dice set",
-  "Cook pots",
-  "Face paint",
-  "Whistle",
-  "Instrument",
-  "Quill & Ink",
-  "Small bell",
-];
-
 const rollGeneralGear2 = (): string => {
-  const roll = Math.floor(Math.random() * generalGear2.length);
-  return generalGear2[roll];
-}
+  const roll = Math.floor(Math.random() * GeneralGear2.length);
+  return GeneralGear2[roll];
+};

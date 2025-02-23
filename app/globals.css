@@ -11,6 +11,10 @@
   --primary-b: rgb(255, 68, 0);
 }
 
+.color-mid {
+  background-color: var(--background-b);
+}
+
 * {
   border-color: var(--foreground);
 }
@@ -18,7 +22,7 @@
 body {
   color: var(--foreground);
   background: var(--background-a);
-  font-size: larger;
+  /* font-size: large; */
 }
 
 h1 {
@@ -35,11 +39,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 2rem;
-}
-
-.color-mid {
-  background-color: var(--background-b);
+  margin-top: 1rem;
 }
 
 button {
