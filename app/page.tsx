@@ -33,9 +33,7 @@ export default function Home() {
 
   // Starting Gear
   const [armor, setArmor] = useState<string | null>(null);
-  const [helmetsAndShields, setHelmetsAndShields] = useState<string | null>(
-    null,
-  );
+  const [helmetsAndShield, setHelmetsAndShield] = useState<string | null>(null);
   const [dungeoneeringGear, setDungeoneeringGear] = useState<string | null>(
     null,
   );
@@ -250,6 +248,42 @@ export default function Home() {
           Armor
         </button>
         <p className="grow px-4 py-2">{armor}</p>
+      </div>
+      <div className="color-mid flex">
+        <button
+          onClick={() => setHelmetsAndShield(rollHelmetAndShield())}
+          className="w-1/2 text-left"
+        >
+          Helmet and Shield
+        </button>
+        <p className="grow px-4 py-2">{helmetsAndShield}</p>
+      </div>
+      <div className="color-mid flex">
+        <button
+          onClick={() => setDungeoneeringGear(rollDungeoneeringGear())}
+          className="w-1/2 text-left"
+        >
+          Dungeoneering Gear
+        </button>
+        <p className="grow px-4 py-2">{dungeoneeringGear}</p>
+      </div>
+      <div className="color-mid flex">
+        <button
+          onClick={() => setGeneralGear1(rollGeneralGear1())}
+          className="w-1/2 text-left"
+        >
+          General Gear 1
+        </button>
+        <p className="grow px-4 py-2">{generalGear1}</p>
+      </div>
+      <div className="color-mid flex">
+        <button
+          onClick={() => setGeneralGear2(rollGeneralGear2())}
+          className="w-1/2 text-left"
+        >
+          General Gear 2
+        </button>
+        <p className="grow px-4 py-2">{generalGear2}</p>
       </div>
     </div>
   );
@@ -657,11 +691,7 @@ const rollMisfortunes = (): string => {
   return misfortunes[roll];
 };
 
-const alignments = [
-  "Law",
-  "Neutrality",
-  "Chaos",
-];
+const alignments = ["Law", "Neutrality", "Chaos"];
 
 const rollAlignment = (): string => {
   const roll = Math.floor(Math.random() * alignments.length);
@@ -681,3 +711,101 @@ const rollArmor = (): string => {
     return "Chain";
   }
 };
+
+const rollHelmetAndShield = (): string => {
+  const roll = rollDie(20);
+
+  if (roll < 14) {
+    return "None";
+  } else if (roll < 17) {
+    return "Helmet";
+  } else if (roll < 20) {
+    return "Shield";
+  } else {
+    return "Helmet and Shield";
+  }
+};
+
+const dungeoneeringGear = [
+  "Rope, 50ft",
+  "Pulleys",
+  "Candles, 5",
+  "Chain, 10ft",
+  "Chalk, 10",
+  "Crowbar",
+  "Tinderbox",
+  "Grap. hook",
+  "Hammer",
+  "Waterskin",
+  "Lantern",
+  "Lamp oil",
+  "Padlock",
+  "Manacles",
+  "Mirror",
+  "Pole, 10ft",
+  "Sack",
+  "Tent",
+  "Spikes, 5",
+  "Torches, 5",
+];
+
+const rollDungeoneeringGear = (): string => {
+  const roll = Math.floor(Math.random() * dungeoneeringGear.length);
+  return dungeoneeringGear[roll];
+};
+
+const generalGear1 = [
+  "Air bladder",
+  "Bear trap",
+  "Shovel",
+  "Bellows",
+  "Grease",
+  "Saw",
+  "Bucket",
+  "Caltrops",
+  "Chisel",
+  "Drill",
+  "Fish. rod",
+  "Marbles",
+  "Glue",
+  "Pick",
+  "Hourglass",
+  "Net",
+  "Tongs",
+  "Lockpicks",
+  "Metal file",
+  "Nails",
+];
+
+const rollGeneralGear1 = (): string => {
+  const roll = Math.floor(Math.random() * generalGear1.length);
+  return generalGear1[roll];
+};
+
+const generalGear2 = [
+  "Incense",
+  "Sponge",
+  "Lens",
+  "Perfume",
+  "Horn",
+  "Bottle",
+  "Soap",
+  "Spyglass",
+  "Tar pot",
+  "Twine",
+  "Fake jewels",
+  "Blank book",
+  "Card deck",
+  "Dice set",
+  "Cook pots",
+  "Face paint",
+  "Whistle",
+  "Instrument",
+  "Quill & Ink",
+  "Small bell",
+];
+
+const rollGeneralGear2 = (): string => {
+  const roll = Math.floor(Math.random() * generalGear2.length);
+  return generalGear2[roll];
+}
