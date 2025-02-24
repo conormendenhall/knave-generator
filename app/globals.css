@@ -15,14 +15,9 @@
   background-color: var(--background-b);
 }
 
-* {
-  border-color: var(--foreground);
-}
-
 body {
   color: var(--foreground);
   background: var(--background-a);
-  /* font-size: large; */
 }
 
 h1 {

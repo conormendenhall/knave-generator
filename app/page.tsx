@@ -18,7 +18,8 @@ import {
   DungeoneeringGear,
   GeneralGear1,
   GeneralGear2,
-} from "./constants";
+} from "./tables";
+
 const jacquard = Jacquard_24({
   weight: "400",
   display: "swap",
@@ -47,7 +48,6 @@ export default function Home() {
   const [background, setBackground] = useState<string | null>(null);
   const [misfortunes, setMisfortunes] = useState<string | null>(null);
   const [alignment, setAlignment] = useState<string | null>(null);
-
   // Starting Gear
   const [armor, setArmor] = useState<string | null>(null);
   const [helmetsAndShield, setHelmetsAndShield] = useState<string | null>(null);
@@ -58,49 +58,75 @@ export default function Home() {
   const [generalGear2, setGeneralGear2] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen items-center p-8">
-      <div className="flex flex-row items-center">
+    <div className="min-h-screen items-center p-[5rem]">
+      <div className="grid-col grid grid-cols-6 items-center gap-2">
         <button
           id="nameButton"
-          className={`${jacquard.className} w-1/2 p-2 text-left text-[4rem]`}
-          onClick={() => setName(generateName())}
+          className={`${jacquard.className} col-span-3 p-2 text-left text-[4rem]`}
+          onClick={() => {
+            setName(generateName());
+            setStrength(lowestOf3d6());
+            setDexterity(lowestOf3d6());
+            setConstitution(lowestOf3d6());
+            setIntelligence(lowestOf3d6());
+            setWisdom(lowestOf3d6());
+            setCharisma(lowestOf3d6());
+            const hpRoll = rollDie(8);
+            setMaxHitPoints(hpRoll);
+            setHitPoints(hpRoll);
+            setPhysique(rollPhysique());
+            setFace(rollFace());
+            setSkin(rollSkin());
+            setHair(rollHair());
+            setClothing(rollClothing());
+            setVirtue(rollVirtue());
+            setVice(rollVice());
+            setSpeech(rollSpeech());
+            setBackground(rollBackground());
+            setMisfortunes(rollMisfortunes());
+            setAlignment(rollAlignment());
+            setArmor(rollArmor());
+            setHelmetsAndShield(rollHelmetAndShield());
+            setDungeoneeringGear(rollDungeoneeringGear());
+            setGeneralGear1(rollGeneralGear1());
+            setGeneralGear2(rollGeneralGear2());
+          }}
         >
           Who art thou, knave?
         </button>
-        <p className="m-4 text-[3rem]">{name}</p>
-        <div className="ml-auto">
+        <p className="col-span-2 m-4 text-[3rem]">{name}</p>
+        <div className="color-mid grid grid-cols-3 self-start">
           <button
             onClick={() => {
               const roll = rollDie(8);
               setMaxHitPoints(roll);
               setHitPoints(roll);
             }}
+            className="col-span-3"
           >
             Hit Points
           </button>
-          <div className="flex color-mid">
-            <button
-              onClick={() =>
-                hitPoints !== null && setHitPoints(Math.max(hitPoints - 1, 0))
-              }
-              className="p-2"
-            >
-              &#9660;
-            </button>
-            <p className="m-2 grow text-center">
-              {maxHitPoints && `${hitPoints}/${maxHitPoints}`}
-            </p>
-            <button
-              onClick={() =>
-                hitPoints !== null &&
-                maxHitPoints !== null &&
-                setHitPoints(Math.min(hitPoints + 1, maxHitPoints))
-              }
-              className="p-2"
-            >
-              &#9650;
-            </button>
-          </div>
+          <button
+            onClick={() =>
+              hitPoints !== null && setHitPoints(Math.max(hitPoints - 1, 0))
+            }
+            className="p-2"
+          >
+            &#9660;
+          </button>
+          <p className="m-2 text-center">
+            {maxHitPoints && `${hitPoints}/${maxHitPoints}`}
+          </p>
+          <button
+            onClick={() =>
+              hitPoints !== null &&
+              maxHitPoints !== null &&
+              setHitPoints(Math.min(hitPoints + 1, maxHitPoints))
+            }
+            className="p-2"
+          >
+            &#9650;
+          </button>
         </div>
       </div>
       <div
@@ -168,8 +194,8 @@ export default function Home() {
           <p className="m-2">Bonus: {charisma && `+${charisma}`}</p>
         </div>
       </div>
-      <section className="flex">
-        <section className="w-1/2">
+      <section className="grid grid-cols-2 gap-2">
+        <section>
           <h2>Traits</h2>
           <div className="color-mid flex">
             <button
@@ -271,7 +297,7 @@ export default function Home() {
             <p className="grow px-4 py-2">{alignment}</p>
           </div>
         </section>
-        <section className="w-1/2">
+        <section>
           <h2>Starting Gear</h2>
           <div className="color-mid flex">
             <button
