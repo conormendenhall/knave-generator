@@ -3,6 +3,7 @@ import { Inknut_Antiqua } from "next/font/google";
 import "./globals.css";
 
 const inknut = Inknut_Antiqua({
+  subsets: ["latin"],
   weight: "400",
   display: "swap",
 });
@@ -19,11 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inknut.className} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${inknut.className} antialiased`}>{children}</body>
     </html>
   );
 }
