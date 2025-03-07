@@ -21,6 +21,7 @@ import {
 } from "./tables";
 
 const jacquard = Jacquard_24({
+  subsets: ["latin"],
   weight: "400",
   display: "swap",
 });
@@ -59,9 +60,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen items-center md:p-20">
-      <div className="grid-col grid grid-cols-2 lg:grid-cols-6 items-center gap-2">
+      <div className="grid-col grid grid-cols-2 items-center gap-2 lg:grid-cols-6">
         <button
-          className={`${jacquard.className} col-span-2 lg:col-span-3 p-2 text-left text-[2rem] lg:text-[4rem]`}
+          className={`${jacquard.className} col-span-2 p-2 text-left text-[2rem] lg:col-span-3 lg:text-[4rem]`}
           onClick={() => {
             setName(generateName());
             setStrength(lowestOf3d6());
@@ -93,7 +94,7 @@ export default function Home() {
         >
           Who art thou, knave?
         </button>
-        <p className="lg:col-span-2 m-4 text-[2rem] lg:text-[3rem]">{name}</p>
+        <p className="m-4 text-[2rem] lg:col-span-2 lg:text-[3rem]">{name}</p>
         <div className="color-mid grid grid-cols-3 self-start">
           <button
             onClick={() => {
@@ -130,7 +131,7 @@ export default function Home() {
       </div>
       <div
         id="abilities"
-        className="grid grid-flow-row grid-cols-3 lg:grid-cols-6 items-center gap-2"
+        className="grid grid-flow-row grid-cols-3 items-center gap-2 lg:grid-cols-6"
       >
         <div>
           <p className="m-2">Defense: {strength && strength + 10}</p>
