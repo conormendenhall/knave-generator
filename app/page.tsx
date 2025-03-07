@@ -58,11 +58,10 @@ export default function Home() {
   const [generalGear2, setGeneralGear2] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen items-center p-[5rem]">
-      <div className="grid-col grid grid-cols-6 items-center gap-2">
+    <div className="min-h-screen items-center md:p-20">
+      <div className="grid-col grid grid-cols-2 lg:grid-cols-6 items-center gap-2">
         <button
-          id="nameButton"
-          className={`${jacquard.className} col-span-3 p-2 text-left text-[4rem]`}
+          className={`${jacquard.className} col-span-2 lg:col-span-3 p-2 text-left text-[2rem] lg:text-[4rem]`}
           onClick={() => {
             setName(generateName());
             setStrength(lowestOf3d6());
@@ -94,7 +93,7 @@ export default function Home() {
         >
           Who art thou, knave?
         </button>
-        <p className="col-span-2 m-4 text-[3rem]">{name}</p>
+        <p className="lg:col-span-2 m-4 text-[2rem] lg:text-[3rem]">{name}</p>
         <div className="color-mid grid grid-cols-3 self-start">
           <button
             onClick={() => {
@@ -131,7 +130,7 @@ export default function Home() {
       </div>
       <div
         id="abilities"
-        className="grid grid-flow-row grid-cols-6 items-center gap-2"
+        className="grid grid-flow-row grid-cols-3 lg:grid-cols-6 items-center gap-2"
       >
         <div>
           <p className="m-2">Defense: {strength && strength + 10}</p>
@@ -194,7 +193,7 @@ export default function Home() {
           <p className="m-2">Bonus: {charisma && `+${charisma}`}</p>
         </div>
       </div>
-      <section className="grid grid-cols-2 gap-2">
+      <div id="attributes" className="grid grid-cols-1 gap-2 lg:grid-cols-2">
         <section>
           <h2>Traits</h2>
           <div className="color-mid flex">
@@ -345,7 +344,7 @@ export default function Home() {
             <p className="grow px-4 py-2">{generalGear2}</p>
           </div>
         </section>
-      </section>
+      </div>
     </div>
   );
 }
